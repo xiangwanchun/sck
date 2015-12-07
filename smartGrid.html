@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>  
+    <link rel="stylesheet" href="plug/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <link type="text/css" rel="stylesheet" href="css/cssrest.css">
+    <link type="text/css" rel="stylesheet" href="css/table.css">
+    <link type="text/css" rel="stylesheet" href="css/smartGrid.css">
+    <link type="text/css" rel="stylesheet" href="css/smartMenu.css">
+
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="plug/ztree/js/jquery.ztree.all-3.5.min.js"></script>
+    <script src="js/jquery-smartMenu.js"></script>
+    <script src="js/template.js"></script>
+    <script src="js/laypage.js"></script>
+    <script src="js/ztree-expand.js"></script>
+    <script src="plug/My97DatePicker/WdatePicker.js"></script>
+    <script src="plug/keyword.js"></script>
+    <script src="plug/selectCopy.js"></script>
+    <script src="js/smartGrid.js"></script>
+    <script src="plug/html5drag.js"></script>
+    <script src="plug/smartScroll.js"></script>
+
+    <script type="text/javascript" charset="utf-8" src="plug/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="plug/ueditor/ueditor.all.min.js"> </script>
+    <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+    <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+    <script type="text/javascript" charset="utf-8" src="plug/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+    <script src="js/cpk.js"></script>
+
+    <script>
+    /*该数据为测试数据,可删除*/
+ $(function(){ 
+/*        var demoHtml = '<li >'+
+'                   <img src="./images/pic_1.png" alt="">'+
+'                   <p title="这是图片全名称">这是图片名称</p>'+
+'               </li>'+
+'               <li>'+
+'                   <img src="./images/pic_2.png" alt="">'+
+'                   <p title="这是图片全名称">这是图片名称</p>'+
+'               </li>'+
+'               <li>'+
+'                   <img src="./images/pic_3.png" alt="">'+
+'                   <p title="这是图片全名称">这是图片名称</p>'+
+'               </li>';
+        for(var i=0;i<100;i++){
+            $('.package_c_ul').append(demoHtml);
+        }*/
+    })
+    </script>
+</head>
+<body>
+<!-- 顶部地址定位栏 -->
+<header class="location-bar">
+    <a href="javascript:;" class="btn-previous bg_icon"></a>
+    <div class="address-tree">
+        <nav class="address-tree-nav">
+            <span><i class="address-tree-cpk-icon bg_icon"></i>素材库</span>
+            <span>文件</span>
+            <span>视屏</span>
+            <span>音频</span>
+        </nav>
+    </div>
+    <div class="location-bar-search">
+        <span class="btn-refresh bg_icon"></span>
+        <input type="text" class="c-search">
+        <button class="c-search-btn bg_icon" title="搜索"></button>
+        <button class="c-search-btn-senior bg_icon" title="高级搜索"></button>
+        <!-- senior-search -->
+        <div class="sreach-column  pop_layer">
+            <div class="sreach-menu authorized-time ">
+                <label class="block-lab">起使时间：</label>
+                <input class="Wdate" type="text" onfocus="WdatePicker()">
+                <label class="block-lab">结束时间：</label>
+                <input class="Wdate" type="text" onfocus="WdatePicker()">
+            </div>
+            <div class="sreach-menu m_top">
+                <label class="sreach-prompt">类型:</label>
+                <div id="interfaceType" class="select  ver_top " style="width:170px; display:inline-block;">
+                    <ul style="display: none;">
+                        <li value="youku">优酷</li>
+                        <li value="tudou">土豆</li>
+                        <li value="iqiyi">爱奇艺</li>
+                        <li value="chinaCache">CDN(chinaCache)</li>
+                        <li value="fastweb">CDN(fastweb)</li>
+                    </ul>
+                    <span style="display: none;"></span>
+                    <a href="javascript:void(0);" name="1">请选择推送厂商</a>
+                </div>
+            </div>
+            <div class="sreach-menu m_top">
+                <label class="sreach-prompt">状态:</label>
+                <div id="interfaceType" class="select  ver_top " style="width:170px; display:inline-block;">
+                    <ul style="display: none;">
+                        <li value="youku">优酷</li>
+                        <li value="tudou">土豆</li>
+                        <li value="iqiyi">爱奇艺</li>
+                        <li value="chinaCache">CDN(chinaCache)</li>
+                        <li value="fastweb">CDN(fastweb)</li>
+                    </ul>
+                    <span style="display: none;"></span>
+                    <a href="javascript:void(0);" name="1">请选择推送厂商</a>
+                </div>
+            </div>
+            <div class="sreach-menu m_top">
+                <label class="sreach-prompt">范围:</label>
+                <div id="interfaceType" class="select  ver_top " style="width:170px; display:inline-block;">
+                    <ul style="display: none;">
+                        <li value="youku">优酷</li>
+                        <li value="tudou">土豆</li>
+                        <li value="iqiyi">爱奇艺</li>
+                        <li value="chinaCache">CDN(chinaCache)</li>
+                        <li value="fastweb">CDN(fastweb)</li>
+                    </ul>
+                    <span style="display: none;"></span>
+                    <a href="javascript:void(0);" name="1">请选择推送厂商</a>
+                </div>
+            </div>
+        </div><!-- senior-search End-->
+    </div>
+</header><!-- 顶部地址定位栏 End-->
+
+<!-- ztree和右边列表 -->
+<article class="clearfix scrollparent">
+    <div class="ztree-box scrollparent">
+        <ul  id ="cpktree" class="cpktree ztree overscroll">
+            
+        </ul>
+    </div><!-- ztree-box End -->
+    <div class="cpk-box-wrap">
+        <div class="cpk-box">
+
+            <!-- 表格显示区块 -->
+            <section class="cpk-box-main vms-box-section">
+                <div class="cpk-box-top">
+                    <div class="cpk-dh">
+                        <div class="cpk-nav-left">
+                            <nav class="cpk-nav">
+                                <a  class="cpk-nav-add" href="javascript:;"><i class="bg_icon"></i>添加</a>
+                                <a  class="cpk-nav-move" href="javascript:;"><i class="bg_icon"></i>移动至 </a>
+                                <a  class="cpk-nav-delete" href="javascript:;"><i class="bg_icon"></i>删除 </a>
+                                <a  class="cpk-nav-push" href="javascript:;"><i class="bg_icon"></i>推送下发 </a>
+                                <a class="cpk-nav-audit" href="javascript:;"><i class="bg_icon"></i>推送审核 </a>
+                                
+                                <!-- <a class="cpk-recycle-clear" href="javascript:;"><i class="bg_icon"></i>清空回收站</a>
+                                <a class="cpk-recycle-reduction" href="javascript:;"><i class="bg_icon"></i>还原 </a>
+                                <a  class="cpk-recycle-delete" href="javascript:;"><i class="bg_icon"></i>删除</a> -->
+
+                                <!-- 发送至 -->
+                                <a class="sck-sentTo-cpk" href="javascript:;"><i class="bg_icon"></i>发送至成品库</a>
+                                <a class="sck-sentTo-zzk" href="javascript:;"><i class="bg_icon"></i>发送至制作库 </a>
+                                <a  class="sck-sentTo-package" href="javascript:;"><i class="bg_icon"></i>发送至包</a>
+
+                            </nav>
+                        </div>
+
+                        <div class="cpk-nav-right">
+                            <nav class="cpk-switch">
+                                <a href="javascript:;"><i class="cpk-versticel bg_icon"></i></a>
+                                <a href="javascript:;"><i class="cpk-rank bg_icon"></i></a>
+                            </nav>
+                        </div>
+                    </div>
+                    <ul class="con_add_nav pop_layer">
+                        <li class="con_add_video now" type="video">
+                            <a href="javascript:;"><i class="bg_icon"></i>视屏</a>
+                        </li>
+                        <li class="con_add_pic" type="picture">
+                            <a href="javascript:;"><i class="bg_icon"></i>图片</a>
+                        </li>
+                        <li class="con_add_audio" type="audio">
+                            <a href="javascript:;"><i class="bg_icon"></i>音频</a>
+                        </li>
+                        <li class="con_add_article" type="article">
+                            <a href="javascript:;"><i class="bg_icon"></i>文稿</a>
+                        </li>
+                        <li class="con_add_package" type="package">
+                            <a href="javascript:;"><i class="bg_icon"></i>包</a>
+                        </li>
+                    </ul>
+                    </div>
+                   <div class="table-wrap">
+                        <table class="grid cpk-box-t">
+                        </table>
+                    </div>
+                     <div class="cpk-box-c gridFooter">
+                        <div class="cpk-qx"><input type="checkbox" id="checkall"><label for="checkall"></label><span>全部选择</span></div>
+                        <div class="pager">
+                            
+                        </div>
+                </div>
+            </section>
+
+            <!-- 表格显示区块 end-->
+            <!-- 添加栏目区块 -->
+            <section class="cpk_add_column vms-box-section">     
+                <div class="column-top column-wrapp">
+                    <div class="column-top-img">
+                        <div class="column-top-img-show">
+                            <img type="z_skin_03"  src="images/wjj.png" />
+                            <input type="hidden" name="icon_skin" value="z_skin_03">
+                        </div>
+                        <div class=" triangle-button ">
+                            <div class="triangle">
+                                <div class="thumbnail">
+                                    <ul>
+                                        <li>
+                                            <div class="thumbnail"><img src="images/wjj.png" /></div>
+                                            <div class="thumbnail" ><img src="images/wjj.png" /></div>
+                                            <div class="thumbnail"><img src="images/wjj.png" /></div>
+                                            <div class="thumbnail"><img src="images/wjj.png" /></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="title-define">
+                           <li>
+                               标题：<input type="text" name="title">
+                           </li>
+                            <li>
+                                别名：<input type="text" name="alias">
+                                     <a class="pentagram "><i class="collection  bg_icon"></i></a>
+                                     <input type="hidden" name="collection">
+                            </li>
+                    </ul>
+                </div>
+                <div class="column-center column-wrapp">
+                    <ul>
+                        <li><span class="column-center-title">创建日期： </span><span>2015/02/11 08:22:24</span></li>
+                        <li><span class="column-center-title">包含内容： </span><span>347项</span></li>
+                        <li><span class="column-center-title">路径： </span><span>成品区/ss/ww/ff/dd/</span></li>
+                    </ul>
+                </div>
+                <!-- 添加栏目权限图标 -->
+                <div class="column-footer column-wrapp">
+                    <div class="column-footer-type" >
+                        <ul>
+                        </ul>
+                    </div>
+                </div>
+                <footer class="cpk_add_column-btn footer_btn">
+                     <button class="btn_complete form_btnblue" title="完成">完成</button>
+                     <button class="btn_cancel form_btnh" title="取消">取消</button>
+                </footer>
+            </section>
+            <!-- 添加栏目区块 end-->
+            <!-- 包添加模块 -->
+            <section class="package vms-box-section">
+                <section class="package_section">
+                    <div class="package_editor_nav_wrap clearfix">
+                        <ul class="package_editor_nav clearfix">
+                            <li><a href="javascript:;" class="bg_icon package_add_btn b_add_icon"></a></li>
+                            <li><a href="javascript:;" class="bg_icon package_del_btn"></a></li>
+                        </ul>
+                        <ul class="package_checkall_wrap">
+                            <li><input type="checkbox" id="package_checkall"><label for="package_checkall"></label><span>全部选择</span></li>
+                        </ul>
+                    </div>
+                    <!-- 包添内容区 -->
+                    <div class="package_c" id="package_c" >
+                        <ul class="package_c_ul package_c_selected">
+                            <li ctype="4" cid="4">
+                                <img src="./images/pic_1.png" draggable="false" alt="">
+                                <p>这是图片名称</p>
+                            </li>
+                            <li ctype="3" cid="3">
+                                <img src="./images/pic_2.png"  draggable="false" alt="">
+                                <p>这是图片名称</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <aside class="package_select_wrap">
+                        <header class="package_select_head">
+                            <div class="package-bar-search">
+                                <input type="text" class="c-search">
+                                <button class="c-search-btn bg_icon" title="搜索"></button>
+                            </div>
+                            <span class="package_return_btn add_package_return_btn" title="返回">返回</span>
+                            <i class="bg_icon package-close"></i>
+                        </header>
+                        <div class="package_select_c_wrap clearfix">
+                            <div class="package_ztree-box">
+                                <ul  id ="package_ztree" class="package_ztree ztree">
+                                        
+                                </ul>
+                            </div>
+
+                            <div class="package_select_c">
+                                <div class="package_select_c_inner">
+                                    <ul class="package_c_ul package_choose clearfix">
+                                        <li cid="1" ctype="1" draggable="true" >
+                                            <img src="./images/pic_1.png" draggable="false" alt="">
+                                            <p>这是图片名称</p>
+                                        </li>
+                                        <li class="package_cur" cid="2" ctype="2" draggable="true">
+                                            <img src="./images/pic_2.png" draggable="false" alt="">
+                                            <p>这是图片名称</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                                
+                        </div>
+                    </aside>
+
+                </section>
+
+                <div class="slider_btn_wrap">
+                    <div class="slider_btn_inner">
+                        <a href="javascript:;" class="slider_btn"></a>
+                    </div>
+                </div>
+
+                <section  class="package_information">
+                    <div class="package_information_inner scrollparent">
+                        <div class="overscroll clearfix aaa">
+                            <div class="video-basic-inform package_basic_inform">
+                                <div class="v-cover">
+                                    <img src="images/cover.png">
+                                    <input type="button" class="modify-cover" value="修改封面">
+                                </div>
+                                <div class="v-title-wrap">
+                                    <div class="v-title">
+                                            <div class="v-form clearfix"><label>包标题：</label><input type="text"></div>
+                                            <div class="v-form"><label>包副标题：</label><input type="text"></div>
+                                            <div class="v-form2 clearfix"><label class="v-describe">包描述：</label><textarea></textarea></div>
+                                            <div class="ve-form-down">
+                                                <label>文件：</label>
+                                                <div id="interfaceType" class="select  m_right ver_top" style="width:120px; display:inline-block;">
+                                                    <ul style="display:none;" >
+                                                        <li value="youku">优酷</li>
+                                                        <li value="tudou">土豆</li>
+                                                        <li value="iqiyi">爱奇艺</li>
+                                                        <li value="chinaCache">CDN(chinaCache)</li>
+                                                        <li value="fastweb">CDN(fastweb)</li>
+                                                    </ul>
+                                                    <span style="display:none;"></span>
+                                                    <a href="javascript:void(0);" name="1" >请选择推送厂商</a>
+                                                </div>
+                                            </div>
+                                            <div class="v-form"><label>来源：</label><input type="text"></div>
+                                            <div class="v-form"><label>作者：</label><input type="text"></div>
+                                            <div class="v-form"><label>编辑：</label><input type="text"></div>
+                                            <div class="v-form add_keywords_wrap">
+                                                    <label  class="fl_left">关键词：</label>
+                                                    <ul class="add_keywords">
+                                                        <li>
+                                                            <input  type="text" class="keyword-input" value="新闻">
+                                                            <i class="remove-icon"></i>
+                                                        </li>
+                                                        <li class="add_keyword_btn_li">
+                                                            <a  class="bg_icon add_keyword_btn fl_left"></a>
+                                                        </li>
+                                                    </ul> 
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="more-inform clearfix">
+                                    <div class="more-top">
+                                        <span>更多信息 </span>
+                                        <a class="moreScroll"><i class="bg_icon add-form"></i>扩展更多</a>
+                                    </div>
+                                    <div class="more-main">
+                                            <div class="more-extension">
+                                               <label>制片人：</label><input type="text">
+                                            </div>
+                                            <div class="more-extension">
+                                                <label>编导：</label><input type="text">
+                                            </div>
+                                            <div class="more-extension">
+                                                 <label>摄影人：</label><input type="text">
+                                            </div>
+                                            <div class="more-extension">
+                                                 <label>编制地点：</label><input type="text">
+                                            </div>
+                                            <div class="more-extension-area">
+                                                <label>演员：</label><textarea></textarea>
+                                            </div>
+                                            <div class="more-extension">
+                                                <label>出品公司：</label><input type="text">
+                                            </div>
+                                            <div class="more-extension">
+                                                <label>主持人：</label><input type="text">
+                                            </div>
+                                            <div class="more-extension">
+                                                <label>记者：</label><input type="text">
+                                            </div>
+                                            <div class="more-extension">
+                                                <label>嘉宾：</label><input type="text">
+                                            </div>
+                                            <div class="more-extension-area">
+                                                <label>看点：</label><textarea></textarea>
+                                            </div>
+                                            <div class="more-extension">
+                                                <label>当前期数：</label><input type="text">
+                                            </div>
+                                            <div class="more-extension">
+                                                <label>封面海报：</label><input type="text">
+                                            </div>
+                                            <div class="more-extension">
+                                                <label>供应商：</label><input type="text">
+                                            </div>
+                                            <div class="more-extension">
+                                                <label>用途：</label><input type="text">
+                                            </div>
+                                            <div class="more-extension">
+                                                <label>别名：</label><input type="text">
+                                            </div>
+                                            <div class="more-extension">
+                                                <label>资费类型：</label><input type="text">
+                                            </div>
+                                    </div>
+                            </div>
+
+                            <div class="more-inform clearfix">
+                                <div class="more-top">
+                                        <span>
+                                            版权信息
+                                        </span>
+                                    <a>
+                                        <i class="bg_icon add-form "></i>
+                                        扩展更多
+                                    </a>
+                                </div>
+                                <div class="more-main">
+                                        <div class="more-extension">
+                                            <label>版权声明：</label><input type="text">
+                                        </div>
+                                        <div class="more-extension">
+                                            <label class="more-word">授权使用者姓名：</label><input type="text">
+                                        </div>
+                                        <div class="more-extension ">
+                                            <label >授权使用方式：</label><input type="text">
+                                        </div>
+                                        <div class="more-extension">
+                                            <label>版权类型：</label><input type="text">
+                                        </div>
+                                        <div class="more-extension authorized-time">
+                                            <label>授权时间：</label><input class="Wdate" type="text"  onfocus="WdatePicker({dateFmt:'yyyy年MM月dd日 HH时mm分ss秒'})" ><a>至</a><input class="Wdate" type="text"  onfocus="WdatePicker({dateFmt:'yyyy年MM月dd日 HH时mm分ss秒'})" >
+                                        </div>
+
+                                        <div class="more-extension-area">
+                                            <label>授权使用地域：</label><textarea></textarea>
+                                        </div>
+                                        <div class="more-extension">
+                                            <label>授权使用次数：</label><input type="text">
+                                        </div>
+
+                                        <div class="more-extension-area">
+                                            <label>发行区域：</label><textarea></textarea>
+                                        </div>
+                                        <div class="more-extension">
+                                            <label>发行语言：</label><input type="text">
+                                        </div>
+                                        <div class="more-extension">
+                                            <label>发行时间：</label><input class="Wdate" type="text"  onfocus="WdatePicker({dateFmt:'yyyy年MM月dd日 HH时mm分ss秒'})" >
+                                        </div>
+                                        <div class="more-extension">
+                                            <label>发行类型：</label><input type="text">
+                                        </div>
+                                        <div class="more-extension">
+                                            <label>发行风格：</label><input type="text">
+                                        </div>
+                                </div>
+                            </div>
+
+                            <div class="more-inform clearfix">
+                                <div class="more-top">
+                                        <span>
+                                            自定义
+                                        </span>
+                                    <a>
+                                        <i class="bg_icon add-form"></i>
+                                        扩展更多
+                                    </a>
+                                </div>
+                                <div class="more-main">
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <footer class="footer_btn">
+
+                        <button class="package_complete_btn form_btnblue b_btn" title="完成">完成</button>
+                        <button class="package_cancel_btn form_btnh b_btn" title="取消">取消</button>
+                       
+                    </footer>
+                </section>
+            </section>
+            <!-- 包添加模块 end -->
+            <!-- 视屏信息修改 -->
+            <section class="videoUpdata vms-box-section ">
+                <div class="scrollparent scrollparent1">
+
+                    <div class="video-editor overscroll">
+                        <div class="video-basic-inform">
+                            <div class="v-cover">
+                                <img src="images/cover.png">
+                                <input type="button" class="modify-cover" value="修改封面">
+                            </div>
+                            <div class="v-title-wrap">
+                                <div class="v-title">
+                                    <div class="v-form"><label>视频标题：</label><input type="text"></div>
+                                    <div class="v-form"><label>视频副标题：</label><input type="text"></div>
+                                    <div class="v-form2"><label class="v-describe">视频描述：</label><textarea></textarea></div>
+                                    <div class="v-form add_keywords_wrap">
+                                        <label  class="fl_left">关键词：</label>
+                                        <ul class="add_keywords">
+                                            <li>
+                                                <input  type="text" class="keyword-input" value="新新闻新闻新闻闻">
+                                                <i class="remove-icon"></i>
+                                            </li>
+                                            <li class="add_keyword_btn_li">
+                                                <a  class="bg_icon add_keyword_btn fl_left"></a>
+                                            </li>
+                                        </ul> 
+                                    </div>
+                                    </div>
+                                <i class="bg_icon"></i>
+                            </div><!-- v-title-wrap  End-->
+                        </div><!-- video-basic-inform  End-->
+                        <div class="more-inform clearfix">
+                                <div class="more-top">
+                                    <span>
+                                        更多信息
+                                    </span>
+                                    <a>
+                                        <i class="bg_icon add-form"></i>
+                                        扩展更多
+                                    </a>
+                                </div>
+                                <div class="more-main">
+                                        <div class="more-extension">
+                                           <label>制片人：</label><input type="text">
+                                        </div>
+                                        <div class="more-extension">
+                                            <label>编导：</label><input type="text">
+                                        </div>
+                                        <div class="more-extension">
+                                             <label>摄影人：</label><input type="text">
+                                        </div>
+                                        <div class="more-extension">
+                                             <label>编制地点：</label><input type="text">
+                                        </div>
+                                        <div class="more-extension-area">
+                                            <label>演员：</label><textarea></textarea>
+                                        </div>
+                                        <div class="more-extension">
+                                            <label>出品公司：</label><input type="text">
+                                        </div>
+                                        <div class="more-extension">
+                                            <label>主持人：</label><input type="text">
+                                        </div>
+                                        <div class="more-extension">
+                                            <label>记者：</label><input type="text">
+                                        </div>
+                                        <div class="more-extension">
+                                            <label>嘉宾：</label><input type="text">
+                                        </div>
+                                        <div class="more-extension-area">
+                                            <label>看点：</label><textarea></textarea>
+                                        </div>
+                                        <div class="more-extension">
+                                            <label>当前期数：</label><input type="text">
+                                        </div>
+                                        <div class="more-extension">
+                                            <label>封面海报：</label><input type="text">
+                                        </div>
+                                        <div class="more-extension">
+                                            <label>供应商：</label><input type="text">
+                                        </div>
+                                        <div class="more-extension">
+                                            <label>用途：</label><input type="text">
+                                        </div>
+                                        <div class="more-extension">
+                                            <label>别名：</label><input type="text">
+                                        </div>
+                                        <div class="more-extension">
+                                            <label>资费类型：</label><input type="text">
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="more-inform clearfix">
+                            <div class="more-top">
+                                <span>版权信息</span>
+                                <a><i class="bg_icon add-form "></i>扩展更多</a>
+                            </div>
+                            <div class="more-main">
+                                    <div class="more-extension">
+                                        <label>版权声明：</label><input type="text">
+                                    </div>
+                                    <div class="more-extension">
+                                        <label class="more-word">授权使用者姓名：</label><input type="text">
+                                    </div>
+                                    <div class="more-extension ">
+                                        <label >授权使用方式：</label><input type="text">
+                                    </div>
+                                    <div class="more-extension">
+                                        <label>版权类型：</label><input type="text">
+                                    </div>
+                                    <div class="more-extension authorized-time">
+                                        <label>授权时间：</label><input class="Wdate" type="text"  onfocus="WdatePicker({dateFmt:'yyyy年MM月dd日 HH时mm分ss秒'})" ><a>至</a><input class="Wdate" type="text"  onfocus="WdatePicker({dateFmt:'yyyy年MM月dd日 HH时mm分ss秒'})" >
+                                    </div>
+
+                                    <div class="more-extension-area">
+                                        <label>授权使用地域：</label><textarea></textarea>
+                                    </div>
+                                    <div class="more-extension">
+                                        <label>授权使用次数：</label><input type="text">
+                                    </div>
+
+                                    <div class="more-extension-area">
+                                        <label>发行区域：</label><textarea></textarea>
+                                    </div>
+                                    <div class="more-extension">
+                                        <label>发行语言：</label><input type="text">
+                                    </div>
+                                    <div class="more-extension">
+                                        <label>发行时间：</label><input class="Wdate" type="text"  onfocus="WdatePicker({dateFmt:'yyyy年MM月dd日 HH时mm分ss秒'})" >
+                                    </div>
+                                    <div class="more-extension">
+                                        <label>发行类型：</label><input type="text">
+                                    </div>
+                                    <div class="more-extension">
+                                        <label>发行风格：</label><input type="text">
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="more-inform clearfix">
+                            <div class="more-top">
+                                <span>自定义</span>
+                                <a>
+                                    <i class="bg_icon add-form"></i> 扩展更多
+                                </a>
+                            </div>
+                            <div class="more-main"></div>
+                        </div>
+                     </div>
+
+                 </div>
+                <footer class="footer_btn">
+                    <input type="button" class="form_btnblue b_btn" value="保存">
+                </footer>
+            </section>
+            <!-- 视屏信息end -->
+            <!-- 文稿添加编辑 -->
+            <section class="manuscriptsUpdata vms-box-section">
+                <div class="edit-wrapper">
+                    <div class="edit-content">
+            
+                         <div class="edit-content-top clearfix">
+                              <div class="edit-row clearfix ">
+                                  <div class="edit-input">
+                                      <label>标题：</label><input class="" type="text">
+                                  </div>
+                                  <div class="edit-input left-margin">
+                                      <label>副标题：</label><input class="" type="text">
+                                  </div>
+                              </div>
+                              <div class="edit-row clearfix">
+                                  <div class="edit-input">
+                                      <label>标题：</label><input class="" type="text">
+                                  </div>
+                              </div>
+            
+                            <div class="add_keywords_wrap edit-row ">
+                                    <label  class="fl_left">关键词：</label>
+                                    <ul class="add_keywords">
+                                        <li>
+                                            <input  type="text" class="keyword-input" value="新新闻新闻新闻闻">
+                                            <i class="remove-icon"></i>
+                                        </li>
+                                        <li class="add_keyword_btn_li">
+                                            <a  class="bg_icon add_keyword_btn fl_left"></a>
+                                        </li>
+                                    </ul> 
+                            </div>
+            
+                         </div>
+                
+                        <div class="edit-content-main clearfix">
+                            <div class="ueditor_wrap padding-left:130px">
+                                <script id="editor" type="text/plain" style="width:660px;height:180px;"></script>
+                            </div>
+                        </div>
+                    </div><!-- edit-wrapper End -->
+                </div><!-- edit-wrapper End -->
+                <footer class="footer_btn">
+                    <button class="form_btnblue b_btn">保存</button>
+                    <button class="form_btnh b_btn">取消</button>
+                </footer>
+            </section>
+            <!-- 文稿添加编辑 End -->
+        </div><!-- cpk-box End -->
+    </div><!-- cpk-box-wrap End -->
+</article>
+
+<footer class="con-footer">
+   共查询出<span>100</span>个文件
+</footer>
+
+<!-- 右边预览划出 -->
+<aside class="preview_aside sliderLayer_r">
+    <div class="preview_aside_close">
+        <i class="bg_icon" title="关闭预览"></i>
+    </div>
+</aside>
+
+<section class="preview_manuscripts sliderLayer_r_fullScreen">
+    <div class="manuscripts_c sliderLayer_fullScreen_c">
+        <div class="manuscripts_l">
+                <p>“简”系列作品继承了前期作品的中西方风格本
+                    质性的共同点，平衡明式家具的周正、欧式沙发的慵
+                    懒两种矛盾的诉求。而在木头靠背的制作上换成亚克
+                    明透明材料，在造型上更多的扬弃了纷繁复杂的装
+                    饰， 用通透的材质给予使用者全然朴素的简单感。
+                    </p>
+                    <p>“简”系列作品继承了前期作品的中西方风格本
+                    质性的共同点，平衡明式家具的周正、欧式沙发的慵
+                    懒两种矛盾的诉求。而在木头靠背的制作上换成亚克
+                    明透明材料，在造型上更多的扬弃了纷繁复杂的装
+                    饰， 用通透的材质给予使用者全然朴素的简单感。
+                    </p>
+                    <p>“简”系列作品继承了前期作品的中西方风格本
+                    质性的共同点，平衡明式家具的周正、欧式沙发的慵
+                    懒两种矛盾的诉求。而在木头靠背的制作上换成亚克
+                    明透明材料，在造型上更多的扬弃了纷繁复杂的装
+                    饰， 用通透的材质给予使用者全然朴素的简单感。
+                    </p>
+                    <p>“简”系列作品继承了前期作品的中西方风格本
+                    质性的共同点，平衡明式家具的周正、欧式沙发的慵
+                    懒两种矛盾的诉求。而在木头靠背的制作上换成亚克
+                    明透明材料，在造型上更多的扬弃了纷繁复杂的装
+                    饰， 用通透的材质给予使用者全然朴素的简单感。
+                    </p>
+                    <p>“简”系列作品继承了前期作品的中西方风格本
+                    质性的共同点，平衡明式家具的周正、欧式沙发的慵
+                    懒两种矛盾的诉求。而在木头靠背的制作上换成亚克
+                    明透明材料，在造型上更多的扬弃了纷繁复杂的装
+                    饰， 用通透的材质给予使用者全然朴素的简单感。
+                    </p>
+                    <p>“简”系列作品继承了前期作品的中西方风格本
+                    质性的共同点，平衡明式家具的周正、欧式沙发的慵
+                    懒两种矛盾的诉求。而在木头靠背的制作上换成亚克
+                    明透明材料，在造型上更多的扬弃了纷繁复杂的装
+                    饰， 用通透的材质给予使用者全然朴素的简单感。
+                    </p>
+                    <p>“简”系列作品继承了前期作品的中西方风格本
+                    质性的共同点，平衡明式家具的周正、欧式沙发的慵
+                    懒两种矛盾的诉求。而在木头靠背的制作上换成亚克
+                    明透明材料，在造型上更多的扬弃了纷繁复杂的装
+                    饰， 用通透的材质给予使用者全然朴素的简单感。
+                    </p>
+                    <p>“简”系列作品继承了前期作品的中西方风格本
+                    质性的共同点，平衡明式家具的周正、欧式沙发的慵
+                    懒两种矛盾的诉求。而在木头靠背的制作上换成亚克
+                    明透明材料，在造型上更多的扬弃了纷繁复杂的装
+                    饰， 用通透的材质给予使用者全然朴素的简单感。
+                    </p>
+                    <p>“简”系列作品继承了前期作品的中西方风格本
+                    质性的共同点，平衡明式家具的周正、欧式沙发的慵
+                    懒两种矛盾的诉求。而在木头靠背的制作上换成亚克
+                    明透明材料，在造型上更多的扬弃了纷繁复杂的装
+                    饰， 用通透的材质给予使用者全然朴素的简单感。
+                    </p>
+                    <p>“简”系列作品继承了前期作品的中西方风格本
+                    质性的共同点，平衡明式家具的周正、欧式沙发的慵
+                    懒两种矛盾的诉求。而在木头靠背的制作上换成亚克
+                    明透明材料，在造型上更多的扬弃了纷繁复杂的装
+                    饰， 用通透的材质给予使用者全然朴素的简单感。
+                    </p>
+                    <p>“简”系列作品继承了前期作品的中西方风格本
+                    质性的共同点，平衡明式家具的周正、欧式沙发的慵
+                    懒两种矛盾的诉求。而在木头靠背的制作上换成亚克
+                    明透明材料，在造型上更多的扬弃了纷繁复杂的装
+                    饰， 用通透的材质给予使用者全然朴素的简单感。
+                    </p>
+                    <p>“简”系列作品继承了前期作品的中西方风格本
+                    质性的共同点，平衡明式家具的周正、欧式沙发的慵
+                    懒两种矛盾的诉求。而在木头靠背的制作上换成亚克
+                    明透明材料，在造型上更多的扬弃了纷繁复杂的装
+                    饰， 用通透的材质给予使用者全然朴素的简单感。
+                    </p>
+                    <p>“简”系列作品继承了前期作品的中西方风格本
+                    质性的共同点，平衡明式家具的周正、欧式沙发的慵
+                    懒两种矛盾的诉求。而在木头靠背的制作上换成亚克
+                    明透明材料，在造型上更多的扬弃了纷繁复杂的装
+                    饰， 用通透的材质给予使用者全然朴素的简单感。
+                    </p>
+                    <p>“简”系列作品继承了前期作品的中西方风格本
+                    质性的共同点，平衡明式家具的周正、欧式沙发的慵
+                    懒两种矛盾的诉求。而在木头靠背的制作上换成亚克
+                    明透明材料，在造型上更多的扬弃了纷繁复杂的装
+                    饰， 用通透的材质给予使用者全然朴素的简单感。
+                    </p>
+        </div>
+        <aside class="manuscripts_r fl_right">
+             <div class="preview_aside_close">
+                <i class="bg_icon vms_close preview_aside_close_btn"></i>
+            </div>
+            <div class="file-details">
+                <ul>
+                    <li class="details-name"><a>文件名:</a><ins>&nbsp;文件名1</ins></li>
+                    <li class="details-type"><a>文件类型:</a><ins>&nbsp;文稿</ins></li>
+                    <li class="details-location"><a>位置:</a><ins>&nbsp;成品区/aa/bb/cc</ins></li>
+                    <li class="details-size"><a>大小:</a><ins>&nbsp;298.KB(305298Byte)</ins></li>
+                    <li class="details-time"><a>创建时间:</a><ins>&nbsp;2014年1月1日&nbsp;12:12:12</ins></li>
+                    <li class="Modify-time"><a>修改时间:</a><ins>&nbsp;2014年1月1日&nbsp;12:12:13</ins></li>
+                    <li class="access-time"><a>最后访问:</a><ins>&nbsp;2014年1月1日&nbsp;12:12:14</ins></li>
+                </ul>
+            </div>
+            <div class="text-information">
+                <p><span>文章摘要:</span>“简”系列作品继承了前期作品的中西方风格本
+                质性的共同点，平衡明式家具的周正、欧式沙发的慵
+                懒两种矛盾的诉求。而在木头靠背的制作上换成亚克
+                明透明材料，在造型上更多的扬弃了纷繁复杂的装
+                饰， 用通透的材质给予使用者全然朴素的简单感。
+                </p>
+            </div>
+      </aside>
+    </div>
+</section>
+
+<!-- 包预览 -->
+<section class="preview_package  sliderLayer_r_fullScreen">
+    <div class="preview_package_c sliderLayer_fullScreen_c">
+        <div class="preview_package_l">
+            <table class="grid preview_package_table">
+                
+            </table>
+        </div>
+        <aside class="preview_package_r fl_right">
+            <div class="preview_aside_close">
+                <span class="package_return_btn pre_package_return_btn" title="返回">返回</span>
+                <i class="bg_icon vms_close preview_aside_close_btn"></i>
+            </div>
+            <div class="file-details">
+                <ul>
+                    <li class="details-name"><a>文件名:</a><ins>&nbsp;文件名1</ins></li>
+                    <li class="details-type"><a>文件类型:</a><ins>&nbsp;文稿</ins></li>
+                    <li class="details-location"><a>位置:</a><ins>&nbsp;成品区/aa/bb/cc</ins></li>
+                    <li class="details-size"><a>大小:</a><ins>&nbsp;298.KB(305298Byte)</ins></li>
+                    <li class="details-time"><a>创建时间:</a><ins>&nbsp;2014年1月1日&nbsp;12:12:12</ins></li>
+                    <li class="Modify-time"><a>修改时间:</a><ins>&nbsp;2014年1月1日&nbsp;12:12:13</ins></li>
+                    <li class="access-time"><a>最后访问:</a><ins>&nbsp;2014年1月1日&nbsp;12:12:14</ins></li>
+                </ul>
+            </div>
+            <div class="text-information">
+                <p><span>文章摘要:</span>“简”系列作品继承了前期作品的中西方风格本
+                质性的共同点，平衡明式家具的周正、欧式沙发的慵
+                懒两种矛盾的诉求。而在木头靠背的制作上换成亚克
+                明透明材料，在造型上更多的扬弃了纷繁复杂的装
+                饰， 用通透的材质给予使用者全然朴素的简单感。
+                </p>
+            </div>
+        </aside>
+    </div>
+    <footer class="sliderLayer_r_fullScreen_footer">
+        <nav class="sliderLayer_r_treeNav">
+            <span>文件包名称文件包名称</span>
+            <span>文件包名</span>
+            <span>文件包名文件包名</span>
+        </nav>
+    </footer>
+</section>
+  
+
+<!-- 移动至外围盒子 -->
+<aside class="moving_to move_btns pop_layer">
+    <header class="moving_to_title">移动至<i class="bg_icon moving_to_close" title="关闭预览"></i></header>
+    <div class="move_to_wrap scrollparent">
+        <ul id ="move_to" class="moving_to_ztree ztree overscroll">
+
+        </ul>
+    </div>
+    <footer class="moving_to_footer">
+        <button class="b_btn form_btnblue moving_to_confirm">确认</button>
+        <button class="b_btn form_btnh moving_to_cancel">取消</button>
+    </footer>
+</aside> <!-- 移动至外围盒子 End-->
+
+<!-- 发送至制作库库外围盒子  -->
+<aside class="sent_to sent_to_zzk pop_layer">
+    <header class="sent_to_title">发送至制作库<i class="bg_icon moving_to_close" title="关闭发送至制作库"></i></header>
+    <div class="sent_to_zzk_wrap scrollparent">
+        <ul id ="sent_to_zzk" class="sent_to_ztree ztree overscroll">
+            
+        </ul>
+    </div>
+    <footer class="sent_to_footer">
+        <button class="b_btn form_btnblue sent_to_confirm">确认</button>
+        <button class="b_btn form_btnh sent_to_cancel">取消</button>
+    </footer>
+</aside> <!-- 发送至制作库库外围盒子 End-->
+
+<!-- 发送至成品库外围盒子  -->
+<aside class="sent_to sent_to_cpk pop_layer">
+    <header class="sent_to_title">发送至成品库<i class="bg_icon moving_to_close" title="关闭发送至素材库"></i></header>
+    <div class="sent_to_cpk_wrap scrollparent">
+        <ul id ="sent_to_cpk" class="sent_to_ztree ztree overscroll">
+            
+        </ul>
+    </div>
+    <div class="sent_to_platform">
+        <h3>发布平台</h3>
+        <ul class="clearfix">
+            <li><input type="checkbox" id="platform1"><label for="platform1"></label><span>PC</span></li>
+            <li><input type="checkbox" id="platform2"><label for="platform2"></label><span>IPTV</span></li>
+            <li><input type="checkbox" id="platform3"><label for="platform3"></label><span>Android</span></li>
+            <li><input type="checkbox" id="platform4"><label for="platform4"></label><span>IOS</span></li>
+            <li><input type="checkbox" id="platform5"><label for="platform5"></label><span>OTT</span></li>
+            <li><input type="checkbox" id="platform6"><label for="platform6"></label><span>OTT</span></li>
+            <li><input type="checkbox" id="platform7"><label for="platform7"></label><span>OTT</span></li>
+        </ul>
+    </div>
+    <footer class="sent_to_footer">
+        <button class="b_btn form_btnblue sent_to_confirm">确认</button>
+        <button class="b_btn form_btnh sent_to_cancel">取消</button>
+    </footer>
+</aside> <!-- 发送至素材库外围盒子 End-->
+
+<!-- 发送至包外围盒子  -->
+<aside class="sent_to sent_to_package pop_layer">
+    <header class="sent_to_title">发送至包<i class="bg_icon moving_to_close" title="关闭发送至素材库"></i></header>
+
+    <div class="sent_to_package_wrap">
+        <div class="sent_to_package_innerL scrollparent">
+            <ul id ="sent_to_packageL" class="sent_to_ztree ztree overscroll">
+                
+            </ul>
+        </div>
+
+        <div class="sent_to_package_innerR scrollparent">
+            <ul id ="sent_to_packageR" class="sent_to_ztree ztree overscroll">
+                
+            </ul>
+        </div>
+    </div>
+    
+    <footer class="sent_to_footer">
+        <button class="b_btn form_btnblue sent_to_confirm">确认</button>
+        <button class="b_btn form_btnh sent_to_cancel">取消</button>
+    </footer>
+</aside> <!-- 发送至包外围盒子 End-->
+</body>
+</html>

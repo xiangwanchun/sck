@@ -1,0 +1,113 @@
+@charset "utf-8";
+.smart_menu_box{display:none; position:absolute; z-index:201105;box-sizing:border-box;}
+.smart_menu_body{padding:1px; border:1px solid #B8CBCB; background-color:#f9f8f8;-moz-box-shadow:2px 2px 5px #666; -webkit-box-shadow:2px 2px 5px #666; box-shadow:2px 2px 10px #d6d6d6;border-radius:4px}
+.smart_menu_ul{margin:0; padding:0; list-style-type:none;}
+.smart_menu_li{position:relative;}
+.smart_menu_a{display:block; height:28px; line-height:28px; padding:0 5px 0 56px; color:#000; font-size:12px; text-decoration:none; overflow:hidden;font-family:'宋体';color: #4e4e4e}
+.smart_menu_a:hover, .smart_menu_a_hover{background-color:#69c1ff; color:#fff; text-decoration:none}
+.smart_menu_li_separate{line-height:0; margin:3px; border-bottom:1px solid #c7c6c6; font-size:0}
+.smart_menu_icon{width:20px; height:18px; border:5px dashed transparent; overflow:hidden;position:absolute;left:20px;top:0}
+.smart_menu_triangle{width:0; height:0; border:5px dashed transparent; border-left:5px solid #666; overflow:hidden; position:absolute; top:7px; right:5px;}
+.smart_menu_a:hover .smart_menu_triangle, .smart_menu_a_hover .smart_menu_triangle{border-left-color:#fff;}
+.smart_menu_li_hover .smart_menu_box{top:-1px; left:195px;}
+
+/*成品库右键图标定位*/
+.r-sort{
+    background-position:-126px -262px ;
+}
+.smart_menu_a_hover .r-sort{
+    background-position:-165px -262px ;
+}
+.r-code{
+    background-position:-126px -302px ;
+}
+.smart_menu_a_hover .r-code{
+    background-position:-165px -302px ;
+}
+.r-material{
+    background-position:-126px -334px ;
+}
+.smart_menu_a_hover .r-material{
+    background-position:-165px -334px ;
+}
+.r-application{
+    background-position:-126px -370px ;
+}
+.smart_menu_a_hover .r-application{
+    background-position:-165px -370px ;
+}
+.r-property{
+    background-position:-126px -405px ;
+}
+.smart_menu_a_hover .r-property{
+    background-position:-165px -405px ;
+}
+.r-issued{
+    background-position:-126px -441px ;
+}
+.smart_menu_a_hover .r-issued{
+    background-position:-165px -441px ;
+}
+.r-audit{
+    background-position:-126px -477px ;
+}
+.smart_menu_a_hover .r-audit{
+    background-position:-165px -477px ;
+}
+.r-del{
+    background-position:-126px -511px ;
+}
+.smart_menu_a_hover .r-del{
+    background-position:-165px -511px ;
+}
+.r-moving{
+    background-position:-126px -548px ;
+}
+.smart_menu_a_hover .r-moving{
+    background-position:-165px -548px ;
+}
+.r-rename{
+    background-position:-126px -582px ;
+}
+.smart_menu_a_hover .r-rename{
+    background-position:-165px -582px ;
+}
+.r-historical{
+    background-position:-126px -618px ;
+}
+.smart_menu_a_hover .r-historical{
+    background-position:-165px -618px ;
+}
+.r-attribute{
+    background-position:-129px -656px ;
+}
+.smart_menu_a_hover .r-attribute{
+    background-position:-168px -656px ;
+}
+.smart_menu_a_hover .r-type{
+    background-position:-126px -680px ;
+}
+.smart_menu_a_hover .r-state{
+    background-position:-126px -680px ;
+}
+.smart_menu_a_hover .r-storage-time{
+    background-position:-126px -680px ;
+}
+.r-add-column{
+    background-position:-92px -48px ;
+}
+.smart_menu_a_hover .r-add-column{
+    background-position:-135px -48px ;
+}
+.r-editor{
+    background-position:-92px -85px ;
+}
+.smart_menu_a_hover .r-editor{
+    background-position:-135px -85px ;
+}
+.r-collection{
+    background-position:-92px -193px ;
+}
+.smart_menu_a_hover .r-collection{
+    background-position:-135px -193px ;
+}
